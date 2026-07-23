@@ -1,0 +1,103 @@
+name: Writekin
+options:
+  bundleIdPrefix: com.scottgoci
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+packages:
+  GRDB:
+    url: https://github.com/groue/GRDB.swift
+    from: 7.0.0
+  mlx-swift:
+    url: https://github.com/ml-explore/mlx-swift
+    from: 0.31.4
+  mlx-swift-lm:
+    url: https://github.com/ml-explore/mlx-swift-lm
+    from: 3.31.4
+  swift-huggingface:
+    url: https://github.com/huggingface/swift-huggingface
+    from: 0.9.0
+  swift-transformers:
+    url: https://github.com/huggingface/swift-transformers
+    from: 1.3.0
+  Sparkle:
+    url: https://github.com/sparkle-project/Sparkle
+    from: 2.6.0
+targets:
+  Writekin:
+    type: application
+    platform: macOS
+    sources: [Writekin]
+    dependencies:
+      - package: GRDB
+        product: GRDB
+      - package: mlx-swift
+        product: MLX
+      - package: mlx-swift
+        product: MLXNN
+      - package: mlx-swift
+        product: MLXOptimizers
+      - package: mlx-swift-lm
+        product: MLXLLM
+      - package: mlx-swift-lm
+        product: MLXLMCommon
+      - package: mlx-swift-lm
+        product: MLXHuggingFace
+      - package: swift-huggingface
+        product: HuggingFace
+      - package: swift-transformers
+        product: Tokenizers
+      - package: Sparkle
+        product: Sparkle
+    # NOTE (packaging plan Tasks 2+3): the app no longer bundles
+    # imessage-exporter (GPL-3.0). It is downloaded on demand, checksum-
+    # pinned, by ExporterInstaller — see Sources › Messages "Set up".
+    info:
+      path: Writekin/Resources/Info.plist
+      properties:
+        # Sparkle (packaging plan Task 4). SUPublicEDKey is intentionally
+        # ABSENT until the maintainer runs Sparkle's generate_keys and pastes the
+        # public key here (private key never enters the repo) — a malformed
+        # key makes Sparkle refuse to start with a user-facing error, so
+        # UpdaterModel only starts the updater once a plausible key exists.
+        # See RELEASING.md.
+        SUPublicEDKey: nBqD7NsLLK6ZxkU0Z/k7a22VGP9D3z4u2gxpWOI4uaA=
+        SUFeedURL: https://scouttyg.github.io/writekin/appcast.xml
+        SUEnableAutomaticChecks: true
+        SUEnableSystemProfiling: false
+        LSApplicationCategoryType: public.app-category.productivity
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
+        PRODUCT_BUNDLE_IDENTIFIER: com.scottgoci.writekin
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.productivity
+        # Version identity (packaging plan Task 1): MARKETING_VERSION is
+        # the user-facing semver; CURRENT_PROJECT_VERSION is the build
+        # number, bumped by scripts/release.sh.
+        MARKETING_VERSION: "0.9.0"
+        CURRENT_PROJECT_VERSION: "1"
+        INFOPLIST_KEY_CFBundleDisplayName: Writekin
+        CODE_SIGN_IDENTITY: "-"
+        ENABLE_HARDENED_RUNTIME: NO
+  WritekinTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources: [WritekinTests]
+    dependencies:
+      - target: Writekin
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Writekin.app/Contents/MacOS/Writekin"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+schemes:
+  Writekin:
+    build:
+      targets:
+        Writekin: all
+    test:
+      targets: [WritekinTests]

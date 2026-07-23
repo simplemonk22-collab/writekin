@@ -1,0 +1,35 @@
+# Generated project — `xcodegen generate` recreates it from project.yml,
+# which is the committed source of truth.
+*.xcodeproj
+
+# Build products and caches (multi-GB, machine-local)
+build/
+.build/
+.derived/
+DerivedData/
+
+# Claude Code session scratch (job temp files, agent progress ledger)
+.claude/
+.superpowers/
+docs/
+
+# Signing material — never committed, no exceptions. Sparkle's private
+# key lives in the login keychain; these patterns catch accidental
+# exports and Apple credentials.
+*.pem
+*.p12
+*.p8
+*.key
+*.mobileprovision
+*.provisionprofile
+*.certSigningRequest
+*.env
+
+# Pristine (un-redacted) screenshot originals — kept locally as masters,
+# never published; the redacted copies in site/screenshots/ are the ones
+# that ship.
+site/screenshots/originals-unredacted/
+
+# OS / editor noise
+.DS_Store
+*.swp

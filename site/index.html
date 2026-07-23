@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Writekin — writing that's kin to yours</title>
+  <meta name="description" content="Writekin ingests your own writing and fine-tunes a local model, on your Mac, so it can draft and rewrite in your voice. Nothing leaves your machine.">
+  <link rel="canonical" href="https://scouttyg.github.io/writekin/">
+  <meta name="theme-color" content="#15171b">
+  <meta name="color-scheme" content="dark">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Writekin">
+  <meta property="og:title" content="Writekin — writing that's kin to yours">
+  <meta property="og:description" content="Writekin ingests your own writing and fine-tunes a local model, on your Mac, so it can draft and rewrite in your voice. Nothing leaves your machine.">
+  <meta property="og:url" content="https://scouttyg.github.io/writekin/">
+  <meta property="og:image" content="https://scouttyg.github.io/writekin/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Writekin — a local AI that writes like you. On-device, Apple Silicon, macOS 14+.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Writekin — writing that's kin to yours">
+  <meta name="twitter:description" content="Writekin ingests your own writing and fine-tunes a local model, on your Mac, so it can draft and rewrite in your voice. Nothing leaves your machine.">
+  <meta name="twitter:image" content="https://scouttyg.github.io/writekin/og.png">
+  <meta name="twitter:image:alt" content="Writekin — a local AI that writes like you. On-device, Apple Silicon, macOS 14+.">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Writekin",
+    "url": "https://scouttyg.github.io/writekin/",
+    "description": "Writekin ingests your own writing and fine-tunes a local language model, entirely on your Mac, so it can draft and rewrite text in your voice.",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "macOS 14+, Apple Silicon",
+    "downloadUrl": "https://github.com/scouttyg/writekin/releases/latest",
+    "softwareVersion": "0.9.0",
+    "license": "https://github.com/scouttyg/writekin/blob/main/LICENSE.md",
+    "image": "https://scouttyg.github.io/writekin/og.png",
+    "author": {
+      "@type": "Person",
+      "name": "Scott Goci",
+      "url": "https://github.com/scouttyg"
+    },
+    "screenshot": [
+      "https://scouttyg.github.io/writekin/screenshots/overview.png",
+      "https://scouttyg.github.io/writekin/screenshots/compose.png",
+      "https://scouttyg.github.io/writekin/screenshots/train.png",
+      "https://scouttyg.github.io/writekin/screenshots/models.png"
+    ],
+    "featureList": [
+      "Ingests your own writing from Mail, Messages, documents, and chat exports",
+      "Fine-tunes a local language model (QLoRA via MLX) on your voice",
+      "Drafts and rewrites text in your personal style",
+      "Runs entirely on-device — no telemetry, no account"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Free for personal, noncommercial use under PolyForm Noncommercial 1.0.0. Commercial use requires a separate license."
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why not just use a SKILL.md or style-guide prompt instead?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Prompting can shift surface style — word choice, sentence rhythm — but the statistical signature of AI-generated text is still underneath it. Fine-tuning changes the model's actual weights on your writing, not just its instructions, which is a different and more durable change." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it need an internet connection?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No, other than checking for app updates (one file, no data sent) and any downloads you start yourself. Ingestion, training, and generation all run offline, on your Mac." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much of my writing does it need?",
+        "acceptedAnswer": { "@type": "Answer", "text": "There's no hard minimum, but more of it — and more variety, across different audiences and moods — produces a better fine-tune. The app shows your corpus size and lets you retrain as it grows." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can it just regurgitate my messages verbatim?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Training includes a check for verbatim overlap between generated output and your source text, so memorization gets flagged rather than passed off as a draft." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it end up training on its own output?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Not by accident — a self-ingestion guard keeps generated drafts out of the training corpus by default. But if you edit a draft and keep it, that edited version is your writing, and you can save it back in to improve future fine-tunes." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work on Windows, Linux, or Intel Macs?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No — Apple Silicon and macOS only. That's also what makes iMessage such a good source: it's already on your Mac in bulk, in your actual voice, with no export or account access needed." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this open source?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The source is public and auditable under a source-available license (PolyForm Noncommercial) — free for personal use; commercial use requires a separate license." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it cost anything?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Writekin is free for personal, noncommercial use under the PolyForm Noncommercial 1.0.0 license. Commercial use requires a separate commercial license — email scottjg@gmail.com to arrange one." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="masthead">
+    <div class="wrap">
+      <div class="brand">
+        <img src="icon.png" alt="Writekin">
+        <span class="name">Writekin</span>
+      </div>
+      <span class="platform">macOS · Apple Silicon</span>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1 class="hero-title">A local AI that writes like you.</h1>
+        <p class="hero-sub">
+          Writekin fine-tunes a language model on your own writing —
+          Mail, Messages, documents, chats — entirely on your Mac, so it
+          can draft and revise in a voice that's actually yours.
+        </p>
+        <div class="cta-row">
+          <a class="btn-primary" href="https://github.com/scouttyg/writekin/releases/latest">Download for macOS</a>
+          <a class="link-quiet" href="https://github.com/scouttyg/writekin">View source →</a>
+        </div>
+        <p class="hero-meta">Free for personal use · Apple Silicon · macOS 14+</p>
+      </div>
+
+      <div class="shot shot-hero">
+        <div class="shot-body">
+          <picture>
+            <source type="image/webp" srcset="screenshots/overview-700.webp 700w, screenshots/overview-1400.webp 1400w" sizes="(max-width: 940px) 100vw, 900px">
+            <img src="screenshots/overview-1400.png" srcset="screenshots/overview-700.png 700w, screenshots/overview-1400.png 1400w" sizes="(max-width: 940px) 100vw, 900px" alt="Writekin's Overview screen, showing corpus status at a glance" fetchpriority="high">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="wrap">
+      <p class="eyebrow">Privacy</p>
+      <h2>Privacy model</h2>
+      <ul class="privacy-list">
+        <li><strong>Ingestion, training, and generation are all local.</strong> No telemetry, no analytics, no account.</li>
+        <li><strong>The update check is the only routine network call.</strong> Sparkle requests one file — the release feed — and sends no system profile.</li>
+        <li><strong>Model weights and optional tools download on request.</strong> Weights come from Hugging Face on demand; the optional Messages tool is checksum-verified and fetched only when you click.</li>
+        <li><strong>The source is the proof.</strong> The repository is public so none of this has to be taken on faith.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <p class="eyebrow">Process</p>
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li data-mark="i."><strong>Ingest</strong> what you've already written — Mail, Messages, documents, chat exports.</li>
+        <li data-mark="ii."><strong>Curate</strong> it into a personal training corpus, entirely on your Mac.</li>
+        <li data-mark="iii."><strong>Fine-tune</strong> a local language model — QLoRA, via MLX — on your voice.</li>
+        <li data-mark="iv."><strong>Compose</strong> — draft or rewrite text that sounds like you.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="screenshots">
+    <div class="wrap">
+      <p class="eyebrow">In use</p>
+      <h2>A real Mac app, not a chat box.</h2>
+      <div class="shot-grid">
+        <figure class="figure">
+          <div class="shot">
+              <div class="shot-body">
+              <picture>
+                <source type="image/webp" srcset="screenshots/compose-700.webp 700w, screenshots/compose-1400.webp 1400w" sizes="(max-width: 700px) 100vw, 700px">
+                <img src="screenshots/compose-1400.png" srcset="screenshots/compose-700.png 700w, screenshots/compose-1400.png 1400w" sizes="(max-width: 700px) 100vw, 700px" alt="Writekin's Compose screen, drafting text in the user's voice" loading="lazy">
+              </picture>
+            </div>
+          </div>
+          <figcaption>Compose — draft and rewrite in your voice</figcaption>
+        </figure>
+        <figure class="figure">
+          <div class="shot">
+              <div class="shot-body">
+              <picture>
+                <source type="image/webp" srcset="screenshots/sources-700.webp 700w, screenshots/sources-1400.webp 1400w" sizes="(max-width: 700px) 100vw, 700px">
+                <img src="screenshots/sources-1400.png" srcset="screenshots/sources-700.png 700w, screenshots/sources-1400.png 1400w" sizes="(max-width: 700px) 100vw, 700px" alt="Writekin's Sources screen, showing detected and managed ingestion sources" loading="lazy">
+              </picture>
+            </div>
+          </div>
+          <figcaption>Sources — what's ingested, and from where</figcaption>
+        </figure>
+        <figure class="figure">
+          <div class="shot">
+              <div class="shot-body">
+              <picture>
+                <source type="image/webp" srcset="screenshots/train-700.webp 700w, screenshots/train-1400.webp 1400w" sizes="(max-width: 700px) 100vw, 700px">
+                <img src="screenshots/train-1400.png" srcset="screenshots/train-700.png 700w, screenshots/train-1400.png 1400w" sizes="(max-width: 700px) 100vw, 700px" alt="Writekin's Train screen, showing a QLoRA training run with a live loss chart" loading="lazy">
+              </picture>
+            </div>
+          </div>
+          <figcaption>Train — a QLoRA run in progress</figcaption>
+        </figure>
+        <figure class="figure">
+          <div class="shot">
+              <div class="shot-body">
+              <picture>
+                <source type="image/webp" srcset="screenshots/models-700.webp 700w, screenshots/models-1400.webp 1400w" sizes="(max-width: 700px) 100vw, 700px">
+                <img src="screenshots/models-1400.png" srcset="screenshots/models-700.png 700w, screenshots/models-1400.png 1400w" sizes="(max-width: 700px) 100vw, 700px" alt="Writekin's Models screen, managing the local model library" loading="lazy">
+              </picture>
+            </div>
+          </div>
+          <figcaption>Models — the local model library</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <p class="eyebrow">Questions</p>
+      <h2>Frequently asked</h2>
+      <ul class="faq-list">
+        <li><strong>Why not just use a SKILL.md or style-guide prompt instead?</strong> People write these to get an AI to sound more like them, sometimes specifically to slip past AI-detection tools. It can shift surface style — word choice, sentence rhythm — but the statistical signature of AI-generated text is still underneath it. Fine-tuning changes the model's actual weights on your writing, not just its instructions, which is a different and more durable change.</li>
+        <li><strong>Does it need an internet connection?</strong> No, other than checking for app updates (one file, no data sent) and any downloads you start yourself — model weights, the optional Messages tool. Ingestion, training, and generation all run offline, on your Mac.</li>
+        <li><strong>How much of my writing does it need?</strong> There's no hard minimum, but more of it — and more variety, across different audiences and moods — produces a better fine-tune. The app shows your corpus size and lets you retrain as it grows.</li>
+        <li><strong>Can it just regurgitate my messages verbatim?</strong> Training includes a check for verbatim overlap between generated output and your source text, so memorization gets flagged rather than passed off as a draft.</li>
+        <li><strong>Does it end up training on its own output?</strong> Not by accident — a self-ingestion guard keeps generated drafts out of the training corpus by default, so it doesn't quietly drift toward its own phrasing. But if you edit a draft and keep it, that edited version really is your writing at that point, and you can save it back in to improve future fine-tunes.</li>
+        <li><strong>Does it work on Windows, Linux, or Intel Macs?</strong> No — Apple Silicon and macOS only. That's also what makes iMessage such a good source here: it's already sitting on your Mac in bulk, in your actual voice, with no export or account access needed.</li>
+        <li><strong>Is this open source?</strong> The source is public and auditable under a source-available license (PolyForm Noncommercial) — free for personal use; commercial use requires a separate license.</li>
+        <li><strong>Does it cost anything?</strong> Writekin is free for personal, noncommercial use under the <a href="https://github.com/scouttyg/writekin/blob/main/LICENSE.md">PolyForm Noncommercial 1.0.0</a> license. Using it in a product, service, or other commercial context requires a separate commercial license — email <a href="mailto:scottjg@gmail.com?subject=%5BWritekin%5D%20Commercial%20License">scottjg@gmail.com</a> to arrange one.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="wrap">
+      <p class="eyebrow">Requirements</p>
+      <h2>Requirements &amp; install</h2>
+      <ul class="req-list">
+        <li><strong>Apple Silicon</strong> — 16 GB unified memory minimum, 32 GB+ recommended for training larger models.</li>
+        <li><strong>macOS 14</strong> or newer.</li>
+        <li><strong>Full Disk Access</strong> — optional, user-granted, only if you want Mail and Messages ingested.</li>
+      </ul>
+      <p class="note">
+        Messages support uses the open-source
+        <a href="https://github.com/ReagentX/imessage-exporter">imessage-exporter</a>
+        (GPL-3.0), downloaded on demand — never bundled with the app.
+      </p>
+      <div class="cta-row" style="margin-top: 28px;">
+        <a class="btn-stamp" href="https://github.com/scouttyg/writekin/releases/latest">Download for macOS</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p class="license">
+        Source-available, free for personal (noncommercial) use under
+        <a href="https://github.com/scouttyg/writekin/blob/main/LICENSE.md">PolyForm Noncommercial 1.0.0</a>.
+      </p>
+      <p class="links">
+        <a href="https://github.com/scouttyg/writekin">GitHub</a>
+        <a href="https://github.com/scouttyg/writekin/blob/main/THIRD_PARTY_LICENSES.md">Third-party licenses</a>
+      </p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+    <button class="lightbox-close" type="button" aria-label="Close preview">&times;</button>
+    <img class="lightbox-img" alt="">
+  </div>
+
+  <script>
+    (function () {
+      var box = document.getElementById('lightbox');
+      if (!box) return;
+      var boxImg = box.querySelector('.lightbox-img');
+      var closeBtn = box.querySelector('.lightbox-close');
+      var lastFocus = null;
+
+      function open(img) {
+        lastFocus = document.activeElement;
+        // Prefer the full-resolution original (screenshots/name.png) over
+        // the downsized -1400 the page displays. Falls back if absent.
+        var literal = img.getAttribute('src') || '';
+        var full = literal.replace(/-1400\.png$/, '.png');
+        boxImg.src = full || img.currentSrc || img.src;
+        boxImg.alt = img.alt || '';
+        box.classList.add('is-open');
+        box.setAttribute('aria-hidden', 'false');
+        closeBtn.focus();
+        document.addEventListener('keydown', onKey);
+      }
+
+      function close() {
+        box.classList.remove('is-open');
+        box.setAttribute('aria-hidden', 'true');
+        boxImg.removeAttribute('src');
+        document.removeEventListener('keydown', onKey);
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      function onKey(e) {
+        if (e.key === 'Escape') close();
+      }
+
+      Array.prototype.forEach.call(document.querySelectorAll('.shot'), function (shot) {
+        var img = shot.querySelector('img');
+        if (!img) return;
+        shot.setAttribute('role', 'button');
+        shot.setAttribute('tabindex', '0');
+        shot.setAttribute('aria-label', 'Enlarge screenshot: ' + (img.alt || ''));
+        shot.classList.add('is-zoomable');
+        shot.addEventListener('click', function () { open(img); });
+        shot.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
+        });
+      });
+
+      box.addEventListener('click', function (e) {
+        if (e.target === box || e.target === closeBtn) close();
+      });
+    })();
+  </script>
+
+</body>
+</html>

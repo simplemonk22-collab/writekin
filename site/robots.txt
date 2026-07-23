@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://scouttyg.github.io/writekin/sitemap.xml

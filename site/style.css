@@ -1,0 +1,560 @@
+/* ---------------------------------------------------------------------
+   Writekin landing page
+   Dark, matching the app's real UI and the app icon: charcoal ground,
+   one mint-green accent (the icon's "trained" line color) for every
+   interactive element, blue kept as a restrained secondary (it lives
+   mainly in the product screenshots and the icon). The dark app
+   screenshots sit flush on the dark page instead of clashing on white.
+   System sans throughout (San Francisco), SF Mono for small labels.
+   Zero external requests, fitting for a tool that makes none either.
+   --------------------------------------------------------------------- */
+
+:root {
+  color-scheme: dark;
+  --bg: #15171b;           /* page ground: deep charcoal (matches icon) */
+  --bg-alt: #1c1f26;       /* raised / alternating sections (icon's lighter stop) */
+  --border: #282c34;       /* hairlines on dark */
+  --border-strong: #363b45;
+  --ink: #eceef2;          /* primary text: warm off-white */
+  --ink-dim: #a4a9b3;      /* secondary text */
+  --ink-faint: #6f757f;    /* captions, meta */
+  --accent: #4ade80;       /* the one accent — mint (icon's trained line) */
+  --accent-deep: #3bcc6d;  /* hover/pressed */
+  --on-accent: #10221a;    /* dark text on mint fills */
+  --blue: #3f8ff7;         /* secondary data color (screenshots + icon) */
+
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --shadow-lg: 0 16px 44px rgba(0, 0, 0, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Masthead */
+
+.masthead {
+  background: rgba(21, 23, 27, 0.72);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: saturate(1.4) blur(10px);
+}
+
+.masthead .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.masthead .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.masthead img {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+}
+
+.masthead .name {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.masthead .platform {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-faint);
+}
+
+/* Section rhythm */
+
+section {
+  padding: 52px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+section:nth-of-type(even) {
+  background: var(--bg-alt);
+}
+
+footer,
+section:last-of-type {
+  border-bottom: none;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 14px;
+  font-weight: 600;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 20px;
+  max-width: 22ch;
+}
+
+/* Hero */
+
+.hero {
+  background:
+    radial-gradient(90% 90% at 50% -10%, rgba(74, 222, 128, 0.10) 0%, transparent 55%),
+    radial-gradient(70% 70% at 85% 0%, rgba(63, 143, 247, 0.10) 0%, transparent 50%),
+    var(--bg);
+  text-align: center;
+  padding-top: 44px;
+  padding-bottom: 24px;
+}
+
+.hero-copy {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 20px;
+  color: var(--ink);
+}
+
+.hero-sub {
+  color: var(--ink-dim);
+  max-width: 42ch;
+  margin: 0 auto 32px;
+  font-size: 1.12rem;
+}
+
+.cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.hero-meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  margin: 20px 0 0;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary {
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: var(--on-accent);
+  background: var(--accent);
+  padding: 13px 26px;
+  border-radius: 9px;
+  display: inline-block;
+  box-shadow: 0 4px 18px rgba(74, 222, 128, 0.22);
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(74, 222, 128, 0.3);
+}
+
+.link-quiet {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.link-quiet:hover {
+  color: var(--accent-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Screenshots — transparent PNG window captures with baked-in shadow.
+   No frame/border/box (would draw a box around the transparent margin);
+   a filter drop-shadow follows the actual window shape to lift the dark
+   captures off the dark page. */
+
+.shot {
+  line-height: 0;
+}
+
+.shot-body {
+  display: block;
+  line-height: 0;
+}
+
+.shot-body picture {
+  display: block;
+}
+
+.shot-body img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.55));
+}
+
+.shot-hero {
+  max-width: 940px;
+  margin: 24px auto 0;
+}
+
+/* Privacy */
+
+.privacy-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.privacy-list li {
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+  color: var(--ink-dim);
+  max-width: 60ch;
+}
+
+.privacy-list li:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.privacy-list li strong,
+.faq-list li strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* FAQ */
+
+.faq-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.faq-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+  color: var(--ink-dim);
+  max-width: 64ch;
+}
+
+.faq-list li:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.faq-list li strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1.02rem;
+}
+
+.faq-list a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.faq-list a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Process */
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  counter-reset: step;
+}
+
+.steps li {
+  counter-increment: step;
+  padding: 20px 0 20px 56px;
+  border-top: 1px solid var(--border);
+  position: relative;
+  color: var(--ink-dim);
+  max-width: 60ch;
+}
+
+.steps li:first-child {
+  border-top: none;
+}
+
+.steps li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.steps li strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Screenshot grid */
+
+.shot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.figure {
+  margin: 0;
+}
+
+.figure .shot {
+  transition: transform 0.2s ease;
+}
+
+.figure .shot:hover {
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .figure .shot:hover {
+    transform: none;
+  }
+}
+
+.figure figcaption {
+  font-size: 0.88rem;
+  color: var(--ink-faint);
+  margin-top: 14px;
+  text-align: center;
+}
+
+/* Requirements */
+
+.req-list {
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.req-list li {
+  color: var(--ink-dim);
+  padding-left: 1.6em;
+  position: relative;
+}
+
+.req-list li::before {
+  content: "\2192";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.req-list li strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.note {
+  font-size: 0.92rem;
+  color: var(--ink-dim);
+  max-width: 60ch;
+}
+
+.note a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.note a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Footer */
+
+footer {
+  background: var(--bg-alt);
+}
+
+footer .wrap {
+  padding: 48px 24px 64px;
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 0.88rem;
+}
+
+footer .license {
+  margin: 0 0 14px;
+}
+
+footer .license a {
+  color: var(--ink-dim);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--border-strong);
+}
+
+footer .license a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+footer .links a {
+  color: var(--ink-dim);
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: 500;
+}
+
+footer .links a:hover {
+  color: var(--accent);
+}
+
+/* Lightbox */
+
+.shot.is-zoomable {
+  cursor: zoom-in;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 5vh 5vw;
+  background: rgba(8, 9, 11, 0.86);
+  backdrop-filter: blur(6px);
+}
+
+.lightbox.is-open {
+  display: flex;
+  animation: lightbox-in 0.15s ease-out;
+}
+
+@keyframes lightbox-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox.is-open {
+    animation: none;
+  }
+}
+
+.lightbox-img {
+  max-width: 92vw;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+/* Responsive */
+
+@media (max-width: 720px) {
+  section {
+    padding: 40px 0;
+  }
+
+  .hero {
+    padding-top: 32px;
+  }
+
+  .shot-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .cta-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

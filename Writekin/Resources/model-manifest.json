@@ -1,0 +1,187 @@
+[
+  {
+    "id": "qwen3-14b-4bit",
+    "displayName": "Qwen3 14B (4-bit)",
+    "hfRepo": "mlx-community/Qwen3-14B-4bit",
+    "files": [
+      {
+        "path": "config.json",
+        "bytes": 939,
+        "sha256": ""
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 11422654,
+        "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 9706,
+        "sha256": ""
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 86266,
+        "sha256": ""
+      },
+      {
+        "path": "model-00001-of-00002.safetensors",
+        "bytes": 5354381380,
+        "sha256": "5795efcfc7c96fd273e600562e8b111bfcc427415de9001d0a07e70cd99cff19"
+      },
+      {
+        "path": "model-00002-of-00002.safetensors",
+        "bytes": 2953517134,
+        "sha256": "2814562d654fe2d541fd4682804a0ccaa400e79701872c8e9f5998cf9481fdf8"
+      }
+    ],
+    "license": "Apache-2.0",
+    "ramTierGB": 32,
+    "kind": "compose",
+    "contextLength": 40960
+  },
+  {
+    "id": "qwen3-8b-4bit",
+    "displayName": "Qwen3 8B (4-bit)",
+    "hfRepo": "mlx-community/Qwen3-8B-4bit",
+    "files": [
+      {
+        "path": "config.json",
+        "bytes": 939,
+        "sha256": ""
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 11422654,
+        "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 9706,
+        "sha256": ""
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 64065,
+        "sha256": ""
+      },
+      {
+        "path": "model.safetensors",
+        "bytes": 4607835174,
+        "sha256": "f2d29621aab300336ad645567ff38c42aac755513006ef4e8a579cf7ef5256d8"
+      }
+    ],
+    "license": "Apache-2.0",
+    "ramTierGB": 32,
+    "kind": "compose",
+    "contextLength": 40960
+  },
+  {
+    "id": "qwen2.5-7b-instruct-4bit",
+    "displayName": "Qwen2.5 7B Instruct (4-bit)",
+    "hfRepo": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+    "files": [
+      {
+        "path": "config.json",
+        "bytes": 787,
+        "sha256": ""
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 7031673,
+        "sha256": ""
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 7280,
+        "sha256": ""
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 51711,
+        "sha256": ""
+      },
+      {
+        "path": "model.safetensors",
+        "bytes": 4284346255,
+        "sha256": "86110f368236b53cf4c2336f991a85703b17bcc60bb75f292b4002ec0219f071"
+      }
+    ],
+    "license": "Apache-2.0",
+    "ramTierGB": 32,
+    "kind": "compose",
+    "contextLength": 32768
+  },
+  {
+    "id": "qwen2.5-3b-instruct-4bit",
+    "displayName": "Qwen2.5 3B Instruct (4-bit)",
+    "hfRepo": "mlx-community/Qwen2.5-3B-Instruct-4bit",
+    "files": [
+      {
+        "path": "config.json",
+        "bytes": 785,
+        "sha256": ""
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 7031673,
+        "sha256": ""
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 7308,
+        "sha256": ""
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 66290,
+        "sha256": ""
+      },
+      {
+        "path": "model.safetensors",
+        "bytes": 1736293090,
+        "sha256": "f212cf6fb9923281a09c135e05d43a052ee5ef7121f5b1dc0b0fb2de80f97cfd"
+      }
+    ],
+    "license": "Apache-2.0",
+    "ramTierGB": 16,
+    "kind": "compose",
+    "contextLength": 32768
+  },
+  {
+    "id": "qwen2.5-1.5b-instruct-4bit",
+    "displayName": "Qwen2.5 1.5B Instruct (4-bit)",
+    "hfRepo": "mlx-community/Qwen2.5-1.5B-Instruct-4bit",
+    "files": [
+      {
+        "path": "config.json",
+        "bytes": 784,
+        "sha256": ""
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 7031673,
+        "sha256": ""
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 7308,
+        "sha256": ""
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 51569,
+        "sha256": ""
+      },
+      {
+        "path": "model.safetensors",
+        "bytes": 868628559,
+        "sha256": "0979f33d1bc58afcf696d13f57977644e7b11a6f0eec3e631d8e9463d18c0717"
+      }
+    ],
+    "license": "Apache-2.0",
+    "ramTierGB": 8,
+    "kind": "labeler",
+    "contextLength": 32768
+  }
+]
